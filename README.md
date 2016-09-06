@@ -5,7 +5,9 @@
  <h4>How to 'add to you project'<h4>
  1) Add script src="util/TableUtills.js" in index.html use tag script
  
- 2) After that you can use it in controller. Examle: 
+ 2) After that you can use it in controller. 
+ Examle: 
+ 
 	if (typeof(TableUtills.setFilter) !== "undefined") {
 					TableUtills.setFilter(this, "TableName", "FilterName");
 		}
