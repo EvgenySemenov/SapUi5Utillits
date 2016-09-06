@@ -1,29 +1,54 @@
 /* 
-Utilites for table, work with sap/ui/table/Table
-if you have sap.m.table using other utils!!!
+Utilites for table
+
 ---------------------------------------------------------
- ADD to you project
+ How to 'add to you project'
  ------------------
- in index.html add <script src="util/TableUtils.js"></script>
- USE
+ in index.html add <script src="util/TableUtills.js"></script>
  ------------------
 Examle use in controller: 
-	if (typeof(TableUtils.setFilter) !== "undefined") {
-					TableUtils.setFilter(this, "TableName", "FilterName");
+	if (typeof(TableUtills.setFilter) !== "undefined") {
+					TableUtills.setFilter(this, "TableName", "FilterName");
 		}
 
- --FUNCTION setFilter - creat dinamiñ filter for Table on View, Table must have Model!!!!
-      view -  this, TableId - Id Table, FilterId - Id Filter
+ setFilter - creat dinami filter for Table on View, Table must have Model!!!!
+ view -  this, TableId - Id Table, FilterId - Id Filter
 
- --FUNCTION  getValueFilterItems
-       core - sap.ui.core
-		  view - this
-		  FilterId
+getValueFilterItems
+ core - sap.ui.core
+view - this
+ FilterId
 
 */
-TableUtils = {
+TableUtills = {
+
+	getType: function(object) {
+		return object.getMetadata()._sClassName;
+	},
+
+	getLineonClick: function(view, oEvent, TableId) {
+		var oModel = view.getView().byId(TableId).getModel();
+		var oTable = view.getView().byId(TableId);
+		var oTableItem = oEvent.getSource().getParent();
+
+		if (this.getType(oTable) === "sap.m.Table") {
+			// for m.table
+			var line = oModel.getProperty(oTableItem.getBindingContextPath());
+		}
+
+		if (this.getType(oTable)  === "sap.ui.Table") {
+			// for sap.ui.table 
+			var sPath = oTableItem.getBindingContext();
+			oTable.getModel().getObject(sPath);
+			var line = oTable.getModel().getObject(sPath.sPath);
+		}
+
+		return line;
+
+	},
 
 	getIdFromTableClick: function(view, oEvent, TableId, ColumdId) {
+
 		//work only with sap.ui.table I dont know how it work with sap.m.table!
 		var oModel = view.getView().byId(TableId).getModel();
 		var oTable = view.getView().byId(TableId);
@@ -80,6 +105,11 @@ TableUtils = {
 			return;
 		}
 		var oData = view.getView().byId(TableId).getModel().getData();
+
+		if (this.getType(view.getView().byId(TableId)) === "sap.m.Table") {
+			console.error("Method getIdFromTableClick use only sap.ui.table!");
+			return;
+		}
 
 		if (oData.d.results[0]) {
 			var sResultArr = oData.d.results[0];
