@@ -1,24 +1,8 @@
 /* 
 Utilites for table
-
----------------------------------------------------------
- How to 'add to you project'
  ------------------
  in index.html add <script src="util/TableUtills.js"></script>
  ------------------
-Examle use in controller: 
-	if (typeof(TableUtills.setFilter) !== "undefined") {
-					TableUtills.setFilter(this, "TableName", "FilterName");
-		}
-
- setFilter - creat dinami filter for Table on View, Table must have Model!!!!
- view -  this, TableId - Id Table, FilterId - Id Filter
-
-getValueFilterItems
- core - sap.ui.core
-view - this
- FilterId
-
 */
 TableUtills = {
 
