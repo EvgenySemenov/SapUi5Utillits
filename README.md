@@ -16,7 +16,7 @@
 		}
 
 <h4>Attentinal</h4>
-
+In TableUtills.js use view but it only name, please put parameters object this.
 
  <h4>Overview</h4>
  <p><b>setFilter</b> - creat dinami filter for Table on View, Table must have Model!!!!
