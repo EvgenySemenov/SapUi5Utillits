@@ -1,11 +1,14 @@
-# SapUi5Utillits
+# Sap Ui5 Utills
 
 <h3>Utilites for table</h3>
 
- <h4>How to 'add to you project'<h4>
- 1) Add script src="util/TableUtills.js" in index.html use tag script
+ <h4>How add to you project<h4>
+ 1) Create folder 'utills' in your project and add file TableUtills.js
  
- 2) After that you can use it in controller. 
+ 1) In index.html add tag script with src="utills/TableUtills.js" 
+ 
+ 3) After that you can use it in controller. 
+ 
  Examle: 
  
 	if (typeof(TableUtills.setFilter) !== "undefined") {
@@ -13,7 +16,7 @@
 		}
 
 <h4>Attentinal</h4>
-In all function use THIS, you must move it from your controller!
+
 
  <h4>Overview</h4>
  <p><b>setFilter</b> - creat dinami filter for Table on View, Table must have Model!!!!
